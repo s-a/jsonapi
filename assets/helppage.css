@@ -102,7 +102,7 @@ h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
 
 @media (min-width: 1200px) {
 	#content main {
-		background: linear-gradient(to right, #fff 0, #fff 50%, #d1d2cb 50%, #d1d2cb 100%);
+		background: linear-gradient(to right, #fff 0, #fff 50%, #B9B2A8 50%, #B9B2A8 100%);
 	}
 }
 

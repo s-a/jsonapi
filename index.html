@@ -118,7 +118,7 @@
 					<div class="row">
 						<div class="col-lg-6">
 							<p>﻿<code>UTF-8</code> must be used for text encoding (there are restrictions on allowed characters for specific fields though).</p>
-<p>Content-Type and accept headers should be set to <code>application/json</code> for server-to-server calls. Redirects use the standard browser types.</p>
+<p><code>Content-Type</code> and <code>Accept</code> headers should be set to <code>application/json</code> for server-to-server calls. Redirects use the standard browser types.</p>
 
 						</div>
 						<div class="col-lg-6">
@@ -4202,7 +4202,7 @@ Numeric[8..8]<br />
 	
 	<div style="padding-bottom: 10px">Service provider to be used for this payment</div>
 	<i class="small text-muted">
-Possible values: PAYPAL, POSTCARD, POSTFINANCE, POSTFINANCEEP2, POSTCARDEP2.<br />
+Possible values: PAYPAL, POSTCARD, POSTFINANCE.<br />
 					<span>Example: PAYPAL</span>
 	</i>
 </td>
@@ -6977,7 +6977,7 @@ Iso885915[1..100]<br />
 </td>
 <td class="col-sm-8">
 	
-	<div style="padding-bottom: 10px">Url to which Saferpay will post the asynchronous confirmation for the transaction. Supported schemes are http and https. You also have to make sure to support the POST-method.</div>
+	<div style="padding-bottom: 10px">Url to which Saferpay will send the asynchronous confirmation for the transaction. Supported schemes are http and https. You also have to make sure to support the GET-method.</div>
 	<i class="small text-muted">
 					<span>Example: https://merchanthost/notify</span>
 	</i>

@@ -735,7 +735,9 @@ information about the outcome of e.g. 3D Secure.</p>
         <div class="tab-pane active" id="csharp">
             <pre class="prettyprint">private object SubmitRequest(string sfpUrl, object request, string sfpLogin, string sfpPassword)
 {
-    using (var client = new WebClient())
+    // don&#39;t keep your connection alive, it&#39;s a simple request/response server call
+    // for details on NoKeepAliveWebClient, see <a href="https://github.com/saferpay/jsonapi/blob/master/snippets/NoKeepAliveWebClient.cs">https://github.com/saferpay/jsonapi/blob/master/snippets/NoKeepAliveWebClient.cs</a>
+    using (var client = new NoKeepAliveWebClient())
     {
         string authInfo = string.Format(&quot;{0}:{1}&quot;, sfpLogin, sfpPassword);
         client.Headers[HttpRequestHeader.Authorization] = &quot;Basic &quot; + Convert.ToBase64String(Encoding.UTF8.GetBytes(authInfo));
@@ -800,6 +802,7 @@ function do_post($username,$password,$url, $JSONObj){
         </div>
     </div>
 </div>
+
 						</div>
 					</div>
 					<div class="row">
@@ -939,7 +942,7 @@ Numeric[8..8]<br />
 	
 	<div style="padding-bottom: 10px">Used to restrict the means of payment which are available to the payer for this transaction. If only one payment method id is set, the payment selection step will be skipped.</div>
 	<i class="small text-muted">
-Possible values: AMEX, DIRECTDEBIT, INVOICE, BONUS, DINERS, EPRZELEWY, EPS, GIROPAY, IDEAL, JCB, MAESTRO, MASTERCARD, MYONE, PAYPAL, POSTCARD, POSTFINANCE, SAFERPAYTEST, SOFORT, VISA, VPAY.<br />
+Possible values: AMEX, BONUS, DINERS, DIRECTDEBIT, EPRZELEWY, EPS, GIROPAY, IDEAL, INVOICE, JCB, MAESTRO, MASTERCARD, MYONE, PAYPAL, POSTCARD, POSTFINANCE, SAFERPAYTEST, SOFORT, VISA, VPAY.<br />
 					<span>Example: [&quot;VISA&quot;, &quot;MASTERCARD&quot;]</span>
 	</i>
 </td>
@@ -6469,7 +6472,7 @@ Utf8[1..50]<br />
 	
 	<div style="padding-bottom: 10px">alphanumeric id of the payment method / brand</div>
 	<i class="small text-muted">
-Possible values: AMEX, DIRECTDEBIT, INVOICE, BONUS, DINERS, EPRZELEWY, EPS, GIROPAY, IDEAL, JCB, MAESTRO, MASTERCARD, MYONE, PAYPAL, POSTCARD, POSTFINANCE, SAFERPAYTEST, SOFORT, VISA, VPAY.<br />
+Possible values: AMEX, BONUS, DINERS, DIRECTDEBIT, EPRZELEWY, EPS, GIROPAY, IDEAL, INVOICE, JCB, MAESTRO, MASTERCARD, MYONE, PAYPAL, POSTCARD, POSTFINANCE, SAFERPAYTEST, SOFORT, VISA, VPAY.<br />
 			</i>
 </td>
 							</tr>
@@ -6945,7 +6948,7 @@ Iso885915[1..100]<br />
 </td>
 <td class="col-sm-8">
 	
-	<div style="padding-bottom: 10px">Email address to which a confirmation email will be sent for successful authorizations. This overrides the email address configured in the back office (if any).</div>
+	<div style="padding-bottom: 10px">Email address to which a confirmation email will be sent for successful authorizations.</div>
 	<i class="small text-muted">
 					<span>Example: merchant@saferpay.com</span>
 	</i>
@@ -8244,7 +8247,7 @@ Possible values: MASTERPASS.<br />
 	
 	<div style="padding-bottom: 10px">May be used to restrict the brands which should be allowed. If not sent, we use all brands configured on this terminal.</div>
 	<i class="small text-muted">
-Possible values: AMEX, DIRECTDEBIT, INVOICE, BONUS, DINERS, EPRZELEWY, EPS, GIROPAY, IDEAL, JCB, MAESTRO, MASTERCARD, MYONE, PAYPAL, POSTCARD, POSTFINANCE, SAFERPAYTEST, SOFORT, VISA, VPAY.<br />
+Possible values: AMEX, BONUS, DINERS, DIRECTDEBIT, EPRZELEWY, EPS, GIROPAY, IDEAL, INVOICE, JCB, MAESTRO, MASTERCARD, MYONE, PAYPAL, POSTCARD, POSTFINANCE, SAFERPAYTEST, SOFORT, VISA, VPAY.<br />
 					<span>Example: [&quot;VISA&quot;, &quot;MASTERCARD&quot;]</span>
 	</i>
 </td>

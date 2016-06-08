@@ -30,7 +30,6 @@
 							<a href="#authentication">Authentication</a>
 							<ul class="nav">
 								<li><a href="#authentication_basic">HTTP basic authentication</a></li>
-								<li><a href="#authentication_cert">Client certificate authentication</a></li>
 							</ul>
 						</li>
 						<li><a href="#errorhandling">Error Handling</a></li>
@@ -189,7 +188,7 @@
 					<h1>Authentication<a class="anchor-link" href="#authentication"><span class="glyphicon glyphicon-link"></span></a></h1>
 					<div class="row">
 						<div class="col-lg-6">
-							<p>Saferpay supports the two mechanisms basic authentication and client certificate for authentication of a server (host) system.</p>
+							<p>Saferpay supports the mechanism of basic authentication for authentication of a server (host) system.</p>
 						</div>
 						<div class="col-lg-6">
 						</div>
@@ -205,47 +204,6 @@
 							<p>﻿HTTP Header:</p>
 <p><code>Authorization: Basic [your base64 encoded user name + password]</code></p>
 
-						</div>
-					</div>
-					<h2 id="authentication_cert">Client certificate authentication<a class="anchor-link" href="#authentication_cert"><span class="glyphicon glyphicon-link"></span></a></h2>
-					<div class="row">
-						<div class="col-lg-6">
-							<p>﻿Authentication by client certificate must be enabled by SIX before being available. If you intend on using this kind of authentication, please make sure you have sufficient knowledge to manage client certificates.</p>
-<p>The following points are important to consider:</p>
-<ul>
-<li>Client certificates have a limited validity (2 years) and must be renewed before this validity expires. Saferpay will not accept any requests which are being sent with an expired client certificate.</li>
-<li>Client certificates should be kept in a safe place, just like basic authentication credentials.</li>
-</ul>
-<p>These steps must be followed in order to create a client certificate for accessing the Saferpay api:</p>
-<ol>
-<li>Create a PKCS#10 certificate request with your company&#39;s name as organization, <code>Saferpay Api</code> as organizational unit, you customer id as common name, and use RSA key length of 2048 bits</li>
-<li>Submit the certificate signing request to Saferpay by uploading in the Saferpay Backoffice.</li>
-<li>Download the signed certificate from the Saferpay Backoffice.</li>
-<li>Depending on the technology you’re using, load the certificate including the private key into the corresponding certificate store for use by your application.</li>
-<li>Have your application send the client certificate with every call to the Saferpay Api (only server-to-server calls). The Saferpay Api will not specifically require a client certificate to be present, so you need to force it being sent with the initial request.</li>
-</ol>
-
-						</div>
-						<div class="col-lg-6">
-							<p>﻿PKCS#10 CSR:</p>
-<table class="table table-striped">
-    <tr>
-        <td class="text-right col-sm-4">Organization (O)</td>
-        <td class="col-sm-8">[your company name] (no brackets)</td>
-    </tr>
-    <tr>
-        <td class="text-right">Organizational Unit (OU)</td>
-        <td>Saferpay Api</td>
-    </tr>
-    <tr>
-        <td class="text-right">Common Name (CN)</td>
-        <td>[Saferpay CustomerId] (no brackets)</td>
-    </tr>
-    <tr>
-        <td class="text-right">RSA Key length</td>
-        <td>2048 bits</td>
-    </tr>
-</table>
 						</div>
 					</div>
 				</section>

@@ -30,6 +30,7 @@
 							<a href="#authentication">Authentication</a>
 							<ul class="nav">
 								<li><a href="#authentication_basic">HTTP basic authentication</a></li>
+								
 							</ul>
 						</li>
 						<li><a href="#errorhandling">Error Handling</a></li>
@@ -206,6 +207,7 @@
 
 						</div>
 					</div>
+					
 				</section>
 
 
@@ -779,7 +781,7 @@ function do_post($username,$password,$url, $JSONObj){
     //Abort if Status != 200 
     $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
     if ( $status != 200 ) {
-        die(&quot;Error: call to URL $url failed with status $status, response $json_response, curl_error &quot; . curl_error($curl) . &quot;, curl_errno &quot; . curl_errno($curl) . &quot;HTTP-Status: &quot; . $status . &quot;&lt;||||&gt; DUMP: URL: &quot;. $url . &quot; &lt;|||&gt; JSON: &quot; . var_dump($JSONObj));
+        die(&quot;Error: call to URL $url failed with status $status, response $jsonResponse, curl_error &quot; . curl_error($curl) . &quot;, curl_errno &quot; . curl_errno($curl) . &quot;HTTP-Status: &quot; . $status . &quot;&lt;||||&gt; DUMP: URL: &quot;. $url . &quot; &lt;|||&gt; JSON: &quot; . var_dump($JSONObj));
     }
     //IMPORTANT!!!
     //Close connection!
@@ -886,6 +888,22 @@ out of the iframe or lack telling you the actual size of the content.</p>
 								</tr>
 								<tr>
 									<td class="col-sm-4 text-right">
+	<strong>ConfigSet</strong><br />
+	<span class="text-muted small">
+		string
+	</span>
+</td>
+<td class="col-sm-8">
+	
+	<div style="padding-bottom: 10px">This parameter let you define your payment page config (PPConfig) by name. If this parameters is not set, your default PPConfig will be applied if available.<br>            When the PPConfig can't be found (e.g. wrong name), the Saferpay basic style will be applied to the payment page.</div>
+	<i class="small text-muted">
+Id[1..20]<br />
+					<span>Example: name of your payment page config (case-insensitive)</span>
+	</i>
+</td>
+								</tr>
+								<tr>
+									<td class="col-sm-4 text-right">
 	<strong>TerminalId</strong><br />
 	<span class="text-muted small">
 			<span>
@@ -932,7 +950,7 @@ Numeric[8..8]<br />
 	
 	<div style="padding-bottom: 10px">Used to restrict the means of payment which are available to the payer for this transaction. If only one payment method id is set, the payment selection step will be skipped.</div>
 	<i class="small text-muted">
-Possible values: AMEX, BONUS, DINERS, DIRECTDEBIT, EPRZELEWY, EPS, GIROPAY, IDEAL, INVOICE, JCB, MAESTRO, MASTERCARD, MYONE, PAYPAL, POSTCARD, POSTFINANCE, SAFERPAYTEST, SOFORT, VISA, VPAY.<br />
+Possible values: AMEX, BANCONTACT, BONUS, DINERS, DIRECTDEBIT, EPRZELEWY, EPS, GIROPAY, IDEAL, INVOICE, JCB, MAESTRO, MASTERCARD, MYONE, PAYPAL, POSTCARD, POSTFINANCE, SAFERPAYTEST, SOFORT, VISA, VPAY.<br />
 					<span>Example: [&quot;VISA&quot;, &quot;MASTERCARD&quot;]</span>
 	</i>
 </td>
@@ -1543,6 +1561,22 @@ Id[1..50]<br />
 								</tr>
 								<tr>
 									<td class="col-sm-4 text-right">
+	<strong>ConfigSet</strong><br />
+	<span class="text-muted small">
+		string
+	</span>
+</td>
+<td class="col-sm-8">
+	
+	<div style="padding-bottom: 10px">This parameter let you define your payment page config (PPConfig) by name. If this parameters is not set, your default PPConfig will be applied if available.<br>            When the PPConfig can't be found (e.g. wrong name), the Saferpay basic style will be applied to the payment page.</div>
+	<i class="small text-muted">
+Id[1..20]<br />
+					<span>Example: name of your payment page config (case-insensitive)</span>
+	</i>
+</td>
+								</tr>
+								<tr>
+									<td class="col-sm-4 text-right">
 	<strong>TerminalId</strong><br />
 	<span class="text-muted small">
 			<span>
@@ -2115,7 +2149,7 @@ Numeric[3..4]<br />
     &quot;RequestId&quot;: &quot;[your request id]&quot;
   },
   &quot;Transaction&quot;: {
-    &quot;Type&quot;: &quot;PURCHASE&quot;,
+    &quot;Type&quot;: &quot;PAYMENT&quot;,
     &quot;Status&quot;: &quot;AUTHORIZED&quot;,
     &quot;Id&quot;: &quot;MUOGAWA9pKr6rAv5dUKIbAjrCGYA&quot;,
     &quot;Date&quot;: &quot;2015-09-18T09:19:27.078Z&quot;,
@@ -2839,7 +2873,7 @@ Numeric[8..8]<br />
     &quot;RequestId&quot;: &quot;[your request id]&quot;
   },
   &quot;Transaction&quot;: {
-    &quot;Type&quot;: &quot;PURCHASE&quot;,
+    &quot;Type&quot;: &quot;PAYMENT&quot;,
     &quot;Status&quot;: &quot;AUTHORIZED&quot;,
     &quot;Id&quot;: &quot;723n4MAjMdhjSAhAKEUdA8jtl9jb&quot;,
     &quot;Date&quot;: &quot;2015-01-30T12:45:22.258+01:00&quot;,
@@ -3107,7 +3141,7 @@ Numeric[8..8]<br />
     &quot;RequestId&quot;: &quot;[your request id]&quot;
   },
   &quot;Transaction&quot;: {
-    &quot;Type&quot;: &quot;PURCHASE&quot;,
+    &quot;Type&quot;: &quot;PAYMENT&quot;,
     &quot;Status&quot;: &quot;AUTHORIZED&quot;,
     &quot;Id&quot;: &quot;723n4MAjMdhjSAhAKEUdA8jtl9jb&quot;,
     &quot;Date&quot;: &quot;2015-01-30T12:45:22.258+01:00&quot;,
@@ -6462,7 +6496,7 @@ Utf8[1..50]<br />
 	
 	<div style="padding-bottom: 10px">alphanumeric id of the payment method / brand</div>
 	<i class="small text-muted">
-Possible values: AMEX, BONUS, DINERS, DIRECTDEBIT, EPRZELEWY, EPS, GIROPAY, IDEAL, INVOICE, JCB, MAESTRO, MASTERCARD, MYONE, PAYPAL, POSTCARD, POSTFINANCE, SAFERPAYTEST, SOFORT, VISA, VPAY.<br />
+Possible values: AMEX, BANCONTACT, BONUS, DINERS, DIRECTDEBIT, EPRZELEWY, EPS, GIROPAY, IDEAL, INVOICE, JCB, MAESTRO, MASTERCARD, MYONE, PAYPAL, POSTCARD, POSTFINANCE, SAFERPAYTEST, SOFORT, VISA, VPAY.<br />
 			</i>
 </td>
 							</tr>
@@ -8237,7 +8271,7 @@ Possible values: MASTERPASS.<br />
 	
 	<div style="padding-bottom: 10px">May be used to restrict the brands which should be allowed. If not sent, we use all brands configured on this terminal.</div>
 	<i class="small text-muted">
-Possible values: AMEX, BONUS, DINERS, DIRECTDEBIT, EPRZELEWY, EPS, GIROPAY, IDEAL, INVOICE, JCB, MAESTRO, MASTERCARD, MYONE, PAYPAL, POSTCARD, POSTFINANCE, SAFERPAYTEST, SOFORT, VISA, VPAY.<br />
+Possible values: AMEX, BANCONTACT, BONUS, DINERS, DIRECTDEBIT, EPRZELEWY, EPS, GIROPAY, IDEAL, INVOICE, JCB, MAESTRO, MASTERCARD, MYONE, PAYPAL, POSTCARD, POSTFINANCE, SAFERPAYTEST, SOFORT, VISA, VPAY.<br />
 					<span>Example: [&quot;VISA&quot;, &quot;MASTERCARD&quot;]</span>
 	</i>
 </td>
@@ -8285,17 +8319,17 @@ Possible values: AMEX, BONUS, DINERS, DIRECTDEBIT, EPRZELEWY, EPS, GIROPAY, IDEA
 		function expandContainers(elem, recursive) {
 			elem.find('a.type-details.in').each(function () {
 				var $this = $(this);
-				var cTr = $this.closest('tr');
-				var tId = $this.attr('href');
-				var table = $("<table class=\"table\"></table>");
-				var nTr = $("<tr class=\"details\"><td colspan=2></td></tr>");
-				cTr.after(nTr);
-				table.appendTo(nTr.children("td"));
-				var copy = $(tId + " tr").clone();
-				copy.appendTo(table);
-				if (recursive) {
-					expandContainers(copy);
-				}
+					var cTr = $this.closest('tr');
+					var tId = $this.attr('href');
+					var table = $("<table class=\"table\"></table>");
+					var nTr = $("<tr class=\"details\"><td colspan=2></td></tr>");
+					cTr.after(nTr);
+					table.appendTo(nTr.children("td"));
+					var copy = $(tId + " tr").clone();
+					copy.appendTo(table);
+					if (recursive) {
+						expandContainers(copy);
+					}
 			});
 		}
 
